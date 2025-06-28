@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+
+.browser-css  {
+  text-align: left !important;
+  background-color: aliceblue;
+  padding: 15px;
+}
