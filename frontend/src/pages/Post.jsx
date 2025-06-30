@@ -30,7 +30,8 @@ export default function Post() {
             try {
                 setLoading(true)
                 setError(null)
-                const fetchedPost = await axios.get(`${backendUrl}/post/${id}`);
+                const fetchedPost = await axios.get(
+                    `${backendUrl}/post/${id}`);
                 console.log("post:",fetchedPost)
                 if(fetchedPost){
                     setPost(fetchedPost.data);
@@ -66,6 +67,7 @@ export default function Post() {
             }
          const status = await axios.delete(
             `${backendUrl}/post/delete/${id}`,
+            
             {withCredentials: true}
         );
         if(status){
