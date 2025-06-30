@@ -25,8 +25,21 @@ export const createTables = async () => {
       );
     `);
 
-    console.log("✅ Tables created successfully.");
+    //Create like table
+    await db.execute(`
+    CREATE TABLE IF NOT EXISTS likes (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      userId INT NOT NULL,
+      postId INT NOT NULL,
+      date DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+      FOREIGN KEY (postId) REFERENCES posts(id) ON DELETE CASCADE,
+      UNIQUE KEY unique_like (userId, postId)
+    );
+  `);
+
+    console.log("Tables created successfully.");
   } catch (err) {
-    console.error("❌ Error creating tables:", err.message);
-  } 
+    console.error(" Error creating tables:", err.message);
+  }
 };

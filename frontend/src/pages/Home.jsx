@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Container from "../components/Container";
 import axios from "axios";
 import PostCard from "../components/PostCard";
@@ -52,16 +51,13 @@ const Home = () => {
   // ];
 
 
-  const getText = (html) =>{
-    const doc = new DOMParser().parseFromString(html, "text/html")
-    return doc.body.textContent
-  }
+  
 
 //  if(loading) return <div>Loading . . .</div>
 
   // if(error) return <div>Error: {error} </div>
 
-  if(posts.length === 0) return <div
+  if(posts.length === 0 || !posts) return <div
   className="py-11 text-4xl text-black-100 font-sans text-center"
   >No posts available</div>
 

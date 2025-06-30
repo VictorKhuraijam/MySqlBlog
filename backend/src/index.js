@@ -7,7 +7,7 @@ import cors from 'cors'
 const app = express()
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: true,
   credentials: true,
 }));
 
@@ -43,11 +43,14 @@ app.use(cookieParser())
 
 import authRoutes from './routes/auth.routes.js'
 import postRoutes from './routes/post.routes.js'
+import likesRoutes from './routes/likes.routes.js'
 
 app.use('/api/auth',authRoutes)
 app.use('/api/post', postRoutes)
+app.use('/api/like', likesRoutes)
 
-app.get('/test', ( req, res) => {
+
+app.get('/', ( req, res) => {
   res.json("The test works")
 })
 

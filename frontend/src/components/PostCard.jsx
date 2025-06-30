@@ -1,13 +1,13 @@
-import { useEffect, useState, useCallback } from 'react'
-// import appwriteService from '../appwrite/config'
+// import { useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
+import LikeButton from './Like';
 
 
 function PostCard({ post}) {
 
   console.log("Post in Post card :", post)
 
-  const [author, setAuthor] = useState(null);
+  // const [author, setAuthor] = useState(null);
 
   // const postData = isSavedPostView ? post.post : post;
 
@@ -58,19 +58,21 @@ function PostCard({ post}) {
           </h2>
         </Link>
 
-        {author && (
+        {/* {author && (
           <div className='flex items-center space-x-4 py-2'>
-            {/* Link wrapping the image */}
+
 
             <div className='flex flex-col'>
               <p className="text-gray-800 font-semibold">{post?.username}</p>
               <p className="text-gray-500 text-sm">{(post?.date)}</p>
             </div>
           </div>
-        )}
+        )} */}
 
 
       </div>
+
+      <LikeButton postId={post?.id} />
 
 
 

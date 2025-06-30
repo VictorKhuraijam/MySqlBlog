@@ -11,12 +11,16 @@ export const AuthContexProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post(
-      `${backendUrl}/auth/login`,
-       inputs,
-      { withCredentials: true,}
-    );
-    setCurrentUser(res.data);
+    try {
+      const res = await axios.post(
+        `${backendUrl}/auth/login`,
+         inputs,
+        { withCredentials: true,}
+      );
+      setCurrentUser(res.data);
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   const logout = async () => {

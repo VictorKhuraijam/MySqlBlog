@@ -47,7 +47,7 @@ function NavBar() {
 
 
   return (
-    <header className='relative py-3 shadow bg-gray-500 '>
+    <header className='relative py-3 shadow bg-gray-600 '>
       <Container>
         <nav className='relative flex justify-between items-center'>
           <div className='mr-4'>
@@ -62,7 +62,7 @@ function NavBar() {
                 </div>
                 <div className='hidden md:block'>
                   <p className='text-white font-medium'>{currentUser?.username}</p>
-                  <p className='text-gray-300 text-sm'>{currentUser?.email}</p>
+                  {/* <p className='text-gray-300 text-sm'>{currentUser?.email}</p> */}
                 </div>
               </div>
             )}

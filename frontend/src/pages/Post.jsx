@@ -5,11 +5,13 @@ import Container from "../components/Container";
 import { AuthContext } from "../context/authContext";
 import { backendUrl } from "../context/const";
 import axios from "axios";
+import LikeButton from "../components/Like";
 
 export default function Post() {
     const [post, setPost] = useState(null);
 
     const [loading, setLoading] = useState(true);
+    const [deleting, setDeleting] = useState(false);
     const [error, setError] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -57,11 +59,15 @@ export default function Post() {
 
 
     const deletePost = async () => {
+        setDeleting(true)
        try {
             if (!post?.id) {
                 throw new Error('Post ID not found');
             }
-         const status = await axios.delete(`${backendUrl}/post/delete/${id}`);
+         const status = await axios.delete(
+            `${backendUrl}/post/delete/${id}`,
+            {withCredentials: true}
+        );
         if(status){
 
             navigate('/')
@@ -69,6 +75,8 @@ export default function Post() {
        } catch (error) {
             console.error('Failed to delete post:', error);
             setError("Failed to delete post");
+       }finally{
+        setDeleting(false)
        }
     };
 
@@ -114,11 +122,12 @@ export default function Post() {
                                 </button >
                             </Link>
                             <button className="mr-3 px-4 py-2 rounded-lg bg-red-500 text-white" onClick={deletePost}>
-                                Delete
+                                {deleting ? "deleting..." : "delete"}
                             </button >
                         </div>
                     )}
                 </div>
+                <LikeButton postId={post?.id} />
                 <div className="w-full mb-6">
 
                     <h1 className="text-2xl font-bold">{post.title}</h1>

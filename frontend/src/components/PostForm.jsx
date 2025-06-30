@@ -49,9 +49,9 @@ function PostForm({post}) {
       if (post) {
         // Update existing post
         response = await axios.put(`${backendUrl}/post/update/${post.id}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+          // headers: {
+          //   'Content-Type': 'multipart/form-data',
+          // },
           withCredentials: true, // For cookie authentication
         })
 
@@ -61,11 +61,14 @@ function PostForm({post}) {
         }
       } else {
         // Create new post
-        response = await axios.post(`${backendUrl}/post/addPost`, formData, {
+        response = await axios.post(
+          `${backendUrl}/post/addPost`,
+           formData,
+           {
+            withCredentials: true, // For cookie authentication
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-          withCredentials: true, // For cookie authentication
         })
 
         if (response.status === 200) {
@@ -130,7 +133,7 @@ function PostForm({post}) {
                 <input
                   label="Featured Image :"
                   type="file"
-                  className='px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full mb-4'
+                  className='px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full mb-4 cursor-pointer'
                   accept="image/png, image/jpg, image/jpeg, image/gif, image/webp"
                   {...register("image", {
                     required: !post ? "Image is required for new posts" : false

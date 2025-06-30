@@ -4,7 +4,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-gray-800 text-white py-8 mt-auto">
+        <footer className="bg-gray-800 text-white py-8 mt-auto ">
             <div className="max-w-6xl mx-auto px-4">
                 {/* Main Footer Content */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -32,16 +32,7 @@ export default function Footer() {
                                     Add Post
                                 </Link>
                             </li>
-                            <li>
-                                <Link to="/about" className="text-gray-300 hover:text-white transition-colors">
-                                    About
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/contact" className="text-gray-300 hover:text-white transition-colors">
-                                    Contact
-                                </Link>
-                            </li>
+                            
                         </ul>
                     </div>
 

@@ -23,23 +23,21 @@ function App() {
   // }, [dispatch]);
 
   return (
-    <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
-      <div className='w-full block'>
-        <NavBar />
+    <div className='min-h-screen flex flex-col bg-gray-400'>
+      <NavBar />
 
-        <main>
-           {/* Only show loading state for the main content */}
-          {loading ? (
-            <div className="w-full h-32 flex items-center justify-center">
-              <div className="text-lg text-gray-600">Loading...</div>
-            </div>
-          ) : (
-            <Outlet />
-          )}
-        </main>
+      <main className='flex-1'>
+         {/* Only show loading state for the main content */}
+        {loading ? (
+          <div className="w-full h-32 flex items-center justify-center">
+            <div className="text-lg text-gray-600">Loading...</div>
+          </div>
+        ) : (
+          <Outlet />
+        )}
+      </main>
 
-        <Footer />
-      </div>
+      <Footer />
     </div>
   )
 }
